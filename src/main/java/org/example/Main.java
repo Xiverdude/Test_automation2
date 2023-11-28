@@ -15,8 +15,9 @@ import java.time.Duration;
 
 public class Main {
     public static void main(String[] args) {
-        String driverPath = "C:\\testATproject\\chromedriver\\chromedriver.exe";
-        String chromePath = "C:\\testATproject\\chrome-win64\\chrome.exe";
+        String driverPath = Config.DRIVER_PATH;
+        String chromePath = Config.DRIVER_PATH;
+
 
         System.setProperty(driverPath, chromePath);  //передаем этот путь в качестве параметра при создании объекта WebDriver:
         WebDriver driver = new ChromeDriver();       //создаем новый драйвер
@@ -33,7 +34,8 @@ public class Main {
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-        driver.navigate().to("https://github.com/");
+        //driver.navigate().to("https://github.com/");
+        driver.navigate().to("https://ru.wikipedia.org/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         //WebElement link = driver.findElement(By.linkText("Викигид"));//находим сслыку по тексту
         //WebElement link2 = driver.findElement(By.partialLinkText("Скачать"));// находим ссылку по части текста
@@ -44,15 +46,30 @@ public class Main {
         //WebElement searchByCssselector = driver.findElement(By.cssSelector("#search-form > fieldset > button"));// поиск по css selector
         //WebElement searchByXpath = driver.findElement(By.xpath("//*[@id=\"search-form\"]/fieldset/button/i"));//поиск по xPath
         //driver.findElement(By.xpath("//*[@id=\"search-form\"]/fieldset/button/i")).click();//поиск по xPath
-        driver.findElement(By.xpath("//*[@id=\"user_email\"]")).click();//поиск по xPath
-        WebElement button = driver.findElement(By.xpath("/html/body/div[1]/div[4]/main/div[4]/div[1]/div/div[2]/div[2]/div/form/div/button"));//поместили в button, который мы найдем по икспасу
-        if (button.getText().equals("Sign up for GitHub")){//если будет полученная надпись: "Sign up for GitHub"
-            System.out.println("Success!");//то получаем это
-        }
-        else System.out.println("Fail!");
+//        driver.findElement(By.xpath("//*[@id=\"user_email\"]")).click();//поиск по xPath
+//        WebElement button = driver.findElement(By.xpath("/html/body/div[1]/div[4]/main/div[4]/div[1]/div/div[2]/div[2]/div/form/div/button"));//поместили в button, который мы найдем по икспасу
+//        if (button.getText().equals("Sign up for GitHub")){//если будет полученная надпись: "Sign up for GitHub"
+//            System.out.println("Success!");//то получаем это
+//        }
+//        else System.out.println("Fail!");
+//        driver.findElement(By.xpath("/html/body/div[1]/div[4]/main/div[4]/div[1]/div/div[2]/div[2]/div/form/div/button")).click();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//        driver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div/div/div/a")).click();
+        WebElement link = driver.findElement(By.xpath("//*[@id=\"n-help\"]/a/span"));
+        System.out.println(link.getText());
+        link.click();
 
-        System.out.println("Button text is " + button.getText());//получаем текст по элементу button
-        button.submit();
+
+//        driver.findElement(By.xpath("//input[@class='vector-search-box-input']")).sendKeys("selenium webdriver");
+//        driver.findElement(By.xpath("//input[@class='searchButton']")).click();
+//        System.out.println(driver.findElement(By.xpath("//div[@id='searchText']/input")).getAttribute("Value"));// выведем значение поля, которое получилось на сайте
+//        driver.findElement(By.xpath("//div[@id='searchText']/input")).clear();// очищаем поле
+
+
+
+
+        //System.out.println("Button text is " + button.getText());//получаем текст по элементу button
+        //button.submit();//нажать кнопку
 
 
 
