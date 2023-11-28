@@ -33,7 +33,7 @@ public class Main {
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-        driver.navigate().to("https://www.wikipedia.org/");
+        driver.navigate().to("https://github.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         //WebElement link = driver.findElement(By.linkText("Викигид"));//находим сслыку по тексту
         //WebElement link2 = driver.findElement(By.partialLinkText("Скачать"));// находим ссылку по части текста
@@ -43,15 +43,25 @@ public class Main {
         //WebElement searchByTag = driver.findElement(By.tagName("input"));//поиск элемента по Тэг-нейму
         //WebElement searchByCssselector = driver.findElement(By.cssSelector("#search-form > fieldset > button"));// поиск по css selector
         //WebElement searchByXpath = driver.findElement(By.xpath("//*[@id=\"search-form\"]/fieldset/button/i"));//поиск по xPath
+        //driver.findElement(By.xpath("//*[@id=\"search-form\"]/fieldset/button/i")).click();//поиск по xPath
+        driver.findElement(By.xpath("//*[@id=\"user_email\"]")).click();//поиск по xPath
+        WebElement button = driver.findElement(By.xpath("/html/body/div[1]/div[4]/main/div[4]/div[1]/div/div[2]/div[2]/div/form/div/button"));//поместили в button, который мы найдем по икспасу
+        if (button.getText().equals("Sign up for GitHub")){//если будет полученная надпись: "Sign up for GitHub"
+            System.out.println("Success!");//то получаем это
+        }
+        else System.out.println("Fail!");
+
+        System.out.println("Button text is " + button.getText());//получаем текст по элементу button
+        button.submit();
 
 
 
 
-        System.out.println(driver.getTitle());// получаем тайтл
+        System.out.println(driver.getTitle());// получаем тайтл и выведем в консоли
         System.out.println(driver.getCurrentUrl());// получим url страницы и выведем в консоли
 
 
-        driver.quit();
+//        driver.quit();
 
 
 
