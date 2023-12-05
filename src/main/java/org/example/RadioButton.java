@@ -45,11 +45,7 @@ public class RadioButton {
 //        driver.findElement(By.xpath(catalog)).click();
 //        Actions actions = new Actions(driver);
 //        actions.moveToElement(driver.findElement(By.xpath(sportHobby))).perform();
-
-
-
-
-    }
+//}
 
 
 }
