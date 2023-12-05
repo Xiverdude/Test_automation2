@@ -1,6 +1,7 @@
 package org.example;
 //CHECKBOX
 //RADIOBUTTON
+//ACTION
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -26,16 +27,29 @@ public class RadioButton {
         driver.findElement(By.xpath("//div[@data-filter-value-id='44150331']//span[@class='_1ZDAA']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//div[@data-zone-name='catalog']")).click();
+//        Actions actions = new Actions(driver);      //создаем Action − интерфейс, абстрагирующий действие (другими словами, некоторую функцию) от визуального компонента
+//        WebElement searchBox = driver.findElement(By.xpath("//span[text()='Спорт и отдых']"));
+//        actions.moveToElement(searchBox).perform(); //наводим курсор по xpath
         Actions actions = new Actions(driver);
-        WebElement searchBox = driver.findElement(By.xpath("//span[text()='Спорт и отдых']"));
-        actions.moveToElement(searchBox).perform();
+        actions.moveToElement(driver.findElement(By.xpath("//span[text()='Спорт и отдых']"))).perform();    //более коротокий вариант
 
+//        selectOption(driver,"Каталог", "Спорт и отдых");
 
         //driver.quit();
+
+
+    }
+//    public static void selectOption(WebDriver driver, String catalog, String sportHobby){
+//        String catalogXpath = String.format("//div[@data-zone-name='catalog']", catalog);
+//        String SportHobbyXpath = String.format("//span[text()='Спорт и отдых']",sportHobby);
+//        driver.findElement(By.xpath(catalog)).click();
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(driver.findElement(By.xpath(sportHobby))).perform();
 
 
 
 
     }
+
 
 }
