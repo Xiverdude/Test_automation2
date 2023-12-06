@@ -24,14 +24,19 @@ public class Basket {
         driver.findElement(By.xpath("//input[@type='text']")).sendKeys("стиральная машина" + Keys.ENTER);//вводим тескт в описковую строку и нажимает ENTER
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.findElement(By.xpath("//span[text()='Все фильтры']")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        List<WebElement> checkboxes = driver.findElements(By.xpath("//div[@data-filter-id='7893318']//input[@type='checkbox']")); // создаем лист , где мы сможешь указывать порядковый номер чекбокса, который мы хотим выбрать
 
-        List<WebElement> checkboxes = driver.findElements(By.xpath("//div[@data-filter-id='7893318']//input[@type='checkbox']"));
-        checkboxes.get(3).click();
-
-
-
+        //checkboxes.get(3).click();checkboxes.get(3).click();// выбираем чекбокс номером 4
 
 
+        if (checkboxes.size()==12) System.out.println("Its ok!"); //проверяем количество чекбоксов
+        else System.out.println("FAIL!");
+
+        for (WebElement checkbox : checkboxes){
+            checkbox.click();
+            //driver.quit();
+        }
 
     }
 
